@@ -178,7 +178,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Controllers\HomeController.vb" />
-    <Compile Include="Controllers\ValuesController.vb" />
+    <Compile Include="API\Controllers\ValuesController.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -189,18 +189,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Style.css">
+    <Content Include="assignment.txt" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\add.controller.js" />
+    <Content Include="app\controllers\details.controller.js" />
+    <Content Include="app\controllers\index.controller.js" />
+    <Content Include="app\views\details.view.html" />
+    <Content Include="app\views\add.view.html" />
+    <Content Include="app\views\index.view.html" />
+    <Content Include="_content\Style.css">
       <DependentUpon>Style.scss</DependentUpon>
     </Content>
-    <Content Include="Content\Style.min.css">
+    <Content Include="_content\Style.min.css">
       <DependentUpon>Style.css</DependentUpon>
     </Content>
-    <Content Include="Content\Style.scss" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
+    <Content Include="_content\Style.scss" />
     <Content Include="_dist\style.css" />
     <Content Include="_dist\style.min.css">
       <DependentUpon>style.css</DependentUpon>
@@ -219,9 +222,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Views\Error.vbhtml" />
+    <Content Include="Views\Shared\Error.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -237,12 +238,24 @@
     <Content Include="Views\Home\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Properties\" />
+    <Folder Include="app\directives\" />
+    <Folder Include="app\filters\" />
+    <Folder Include="app\services\" />
+    <Folder Include="_vendor\angular-ui-bootstrap\" />
+    <Folder Include="_vendor\bootstrap\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectsDemo.Data\ProjectsDemo.Data.vbproj">
+      <Project>{ecd15eb8-06f8-44ca-b535-635b7605e409}</Project>
+      <Name>ProjectsDemo.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectsDemo.Model\ProjectsDemo.Model.vbproj">
+      <Project>{b212996a-6c30-454c-9391-3ef7e76e78b3}</Project>
+      <Name>ProjectsDemo.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

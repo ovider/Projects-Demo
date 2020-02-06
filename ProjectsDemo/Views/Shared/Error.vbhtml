@@ -10,6 +10,6 @@ End Code
     <title>Error</title>
 </head>
 <body>
-    <p>Something is not right!</p>
+    <h2>Ups. Something went utterly wrong!</h2>
 </body>
 </html>

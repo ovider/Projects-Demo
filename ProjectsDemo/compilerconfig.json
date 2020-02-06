@@ -1,6 +1,6 @@
 ﻿[
   {
-    "outputFile": "_dist/style.css",
-    "inputFile": "Content/Style.scss"
+    "outputFile": "web/_dist/style.css",
+    "inputFile": "web/_content/style.scss"
   }
 ]

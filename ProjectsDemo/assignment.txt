@@ -1,0 +1,10 @@
+﻿Assume the following object structure:
+
+Project: Id, Name, Scheduled Date, Price
+
+Build a solution to list projects, view a single project and create a new project. 
+When listing projects, the user must be able to filter the projects list via a search box.
+
+An API must be created using VB .NET. The frontend must use Angularjs included in the Razor view. For styling use SCSS.
+
+Please deploy your solution to a cloud hosting platform of your choice, forward the link to us and include all your code in a repository that you can share with us
