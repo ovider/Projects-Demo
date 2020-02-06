@@ -6,6 +6,9 @@ Public Class WebApiApplication
 
     Sub Application_Start()
         AreaRegistration.RegisterAllAreas()
+
+        UnityConfig.RegisterComponents()
+
         GlobalConfiguration.Configure(AddressOf WebApiConfig.Register)
         FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters)
         RouteConfig.RegisterRoutes(RouteTable.Routes)
