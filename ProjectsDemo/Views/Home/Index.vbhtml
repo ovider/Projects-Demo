@@ -3,37 +3,58 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Projects - Demo Application</title>
+
+    <title>Projects Management - Demo Application</title>
+
     <base href="/" />
 
+    @*site style*@
     @Styles.Render("~/styles")
 
 </head>
 <body ng-app="app">
     <header>
-        <h1>
-            Projects - Demo Application
-        </h1>
-        <nav>
-            <a ui-sref="index" ui-sref-active="active">All Projects</a>
-            <a ui-sref="add" ui-sref-active="active">Create Project</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bd-navbar">
+            <h1 class="navbar-brand">
+                Projects Management - Demo Application
+            </h1>
+
+            <button type="button" class="navbar-toggler" ng-click="isNavCollapsed = !isNavCollapsed">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" uib-collapse="isNavCollapsed">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref="index" ui-sref-active="active">All Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref="add" ui-sref-active="active">Create Project</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
         </nav>
     </header>
 
 
-    <main ui-view>
+    <main ui-view class="container">
 
     </main>
 
     <footer>
-        <p>Developed by <a href="https://www.linkedin.com/in/ovidiueremia/" target="_blank">Ovidiu Eremia</a>.</p>
-        <p>All source code is available on <a href="https://github.com/ovider/Projects-Demo" target="_blank">GitHub</a>.</p>
+        <div class="container">
+            <p>Developed by <a href="https://www.linkedin.com/in/ovidiueremia/" target="_blank">Ovidiu Eremia</a>.</p>
+            <p>All source code is available on <a href="https://github.com/ovider/Projects-Demo" target="_blank">GitHub</a>.</p>
+        </div>
     </footer>
 
-    <!-- angular -->
-    <script src="//unpkg.com/angular@1.7.9/angular.js"></script>
-    <script src="//unpkg.com/%40uirouter/angularjs@1.0.5/release/angular-ui-router.js"></script>
-
+    <!-- core -->
+    @Scripts.Render("~/scripts/core")
     <!-- app -->
     @Scripts.Render("~/scripts/app")
 </body>

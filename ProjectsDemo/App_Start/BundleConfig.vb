@@ -11,17 +11,40 @@ Public Module BundleConfig
 #End If
 
         Dim stylesBundle As StyleBundle = CreateStylesBundle()
+        Dim coreScriptsBundle As ScriptBundle = CreateCoreScriptsBundle()
         Dim appScriptsBundle As ScriptBundle = CreateAppScriptsBundle()
 
         bundles.Add(stylesBundle)
+        bundles.Add(coreScriptsBundle)
         bundles.Add(appScriptsBundle)
     End Sub
+
+    ''' <summary>
+    ''' Create a bundle with all the external javascript dependencies of the application
+    ''' </summary>
+    ''' <returns></returns>
+    Private Function CreateCoreScriptsBundle() As ScriptBundle
+        Dim bundle = New ScriptBundle("~/scripts/core") With {
+            .Orderer = New NonOrderingBundleOrderer()
+        }
+
+        bundle.Include(
+            "~/_vendor/angular/angular.min.js",
+            "~/_vendor/angular-ui-router/angular-ui-router.min.js",
+            "~/_vendor/angular-animate/angular-animate.min.js",
+            "~/_vendor/angular-touch/angular-touch.min.js",
+            "~/_vendor/ui-bootstrap/ui-bootstrap.js"
+            )
+
+        Return bundle
+    End Function
+
 
     ''' <summary>
     ''' Creates a bundle with all the javascript files which compose the angular application
     ''' </summary>
     Private Function CreateAppScriptsBundle() As ScriptBundle
-        Dim appScriptsBundle = New ScriptBundle("~/scripts/app") With {
+        Dim bundle = New ScriptBundle("~/scripts/app") With {
             .Orderer = New NonOrderingBundleOrderer()
         }
 
@@ -32,25 +55,32 @@ Public Module BundleConfig
         ' * filters
         ' * services
 
-        appScriptsBundle.Include(
+        bundle.Include(
                     "~/app/app.js",
                     "~/app/controllers/*.js",
                     "~/app/directives/*.js",
                     "~/app/filters/*.js",
                     "~/app/services/*.js")
 
-        Return appScriptsBundle
+        Return bundle
     End Function
 
+    ''' <summary>
+    ''' Creates a bundle with all the styles required by the application
+    ''' </summary>
     Private Function CreateStylesBundle() As StyleBundle
         '' Create a bundle with all the styles to be included in the razor view
         '' we use a non ordering bundle orderer so that the order the files are included in the bundle is respected.
-        Dim stylesBundle = New StyleBundle("~/styles") With {
+        Dim bundle = New StyleBundle("~/styles") With {
             .Orderer = New NonOrderingBundleOrderer()
         }
 
-        stylesBundle.Include("~/_dist/style.css")
-        Return stylesBundle
+        bundle.Include(
+            "~/_vendor/bootstrap/bootstrap.min.css",
+            "~/_dist/style.css",
+            "~/_dist/responsive.css")
+
+        Return bundle
     End Function
 
     ''' <summary>

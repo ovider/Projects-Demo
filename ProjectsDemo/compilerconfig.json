@@ -1,6 +1,10 @@
 ﻿[
   {
-    "outputFile": "web/_dist/style.css",
-    "inputFile": "web/_content/style.scss"
+    "outputFile": "_dist/style.css",
+    "inputFile": "_content/styles/site.scss"
+  },
+  {
+    "outputFile": "_dist/responsive.css",
+    "inputFile": "_content/styles/responsive.scss"
   }
 ]
