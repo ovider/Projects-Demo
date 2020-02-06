@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bd-navbar">
             <h1 class="navbar-brand">
-                Projects Management - Demo Application
+                Projects Management
             </h1>
 
             <button type="button" class="navbar-toggler" ng-click="isNavCollapsed = !isNavCollapsed">
@@ -48,8 +48,12 @@
 
     <footer>
         <div class="container">
-            <p>Developed by <a href="https://www.linkedin.com/in/ovidiueremia/" target="_blank">Ovidiu Eremia</a>.</p>
-            <p>All source code is available on <a href="https://github.com/ovider/Projects-Demo" target="_blank">GitHub</a>.</p>
+            <p>
+                Demo application developed by <a href="https://www.linkedin.com/in/ovidiueremia/" target="_blank">Ovidiu Eremia</a>.
+            </p>
+            <p>
+                All source code is available on <a href="https://github.com/ovider/Projects-Demo" target="_blank">GitHub</a>.
+            </p>
         </div>
     </footer>
 
