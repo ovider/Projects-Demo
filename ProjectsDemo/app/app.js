@@ -13,27 +13,41 @@
         // define the routes
         $stateProvider
             .state('index', {
-                url: '/',
+                url: '/:page',
                 templateUrl: 'app/views/index.view.html',
                 controller: 'Projects.IndexController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                params: {
+                    page: {
+                        value: "1",
+                        squash: true
+                    }
+                },
+                data: { tab: 'index' }
             })
             .state('add', {
                 url: '/new',
                 templateUrl: 'app/views/add.view.html',
                 controller: 'Projects.AddController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                data: { tab: 'new' }
             })
             .state('details', {
-                url: '/:_id',
+                url: '/project/:_id',
                 templateUrl: 'app/views/details.view.html',
                 controller: 'Projects.DetailsController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                data: { tab: 'index' }
             });
 
         $locationProvider.html5Mode(true);
     }
-    function run() {
+    function run($rootScope) {
         // callback for module run
+
+        // update active tab on state change
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            $rootScope.activeTab = toState.data.tab;
+        });
     }
 })();

@@ -9,9 +9,15 @@ Public Class ProjectsController
     ' GET api/projects
     <HttpGet>
     <Route("")>
-    Public Function GetProjects(Optional q As String = Nothing) As IHttpActionResult
+    <Route("page/{page}")>
+    Public Function GetProjects(
+                               Optional page As Integer = 1,
+                               Optional q As String = Nothing) As IHttpActionResult
 
-        Dim result = Repository.Find(Of ProjectModel)(MapperConfiguration, q)
+        Dim result = Repository.GetPage(Of ProjectModel)(MapperConfiguration,
+                                                         page:=page,
+                                                         pageSize:=5,
+                                                         filter:=q)
 
         Return Ok(result)
 

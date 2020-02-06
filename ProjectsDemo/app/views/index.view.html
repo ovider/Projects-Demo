@@ -1,1 +1,52 @@
 ﻿<h2>Projects List</h2>
+<p ng-if="vm.loading">loading data..</p>
+<div ng-if="vm.errorMessage" uib-alert class="alert-danger" close="vm.closeAlert()">{{vm.errorMessage}}</div>
+
+<div ng-if="!vm.errorMessage && !vm.loading">
+    <div class="table-responsive-sm mb-3 mt-3">
+        <div ng-if="!vm.projects.length">
+            There are no projects to show.
+        </div>
+        <table class="table table-bordered table-striped" ng-if="vm.projects.length">
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th class="text-nowrap">Scheduled For</th>
+                    <th>Price ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in vm.projects">
+                    <td>
+                        {{project.name}}
+                    </td>
+                    <td>
+                        {{project.scheduledDate | date: 'dd MMM yyyy'}}
+                    </td>
+                    <td>
+                        {{project.price | number}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        
+    <div class="row">
+        <div class="col-sm-6">
+            <ul ng-if="vm.projects.length"
+                uib-pagination
+                total-items="vm.total"
+                ng-model="vm.page"
+                items-per-page="vm.pageSize"
+                max-size="5"
+                class="pagination"
+                boundary-link-numbers="true"
+                ng-click="vm.goToPage()"
+                rotate="false">
+            </ul>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a class="btn btn-primary" ui-sref="add">Add a new project!</a>
+        </div>
+    </div>
+</div>

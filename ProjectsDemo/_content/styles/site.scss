@@ -1,32 +1,51 @@
 ﻿@import 'variables';
 
-body {
-    a, a:hover {
-        color: $link-color;
-        text-decoration: none;
-    }
+html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
 
-    header {
-        .bd-navbar {
-            background-color: $brand-color;
+    body {
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 95px;
+        position: relative;
+
+        a, a:hover {
+            color: $link-color;
+            text-decoration: none;
         }
-    }
 
-    main {
-        margin-top: 35px;
-        margin-bottom: 35px;
-        min-height: 100px;
-    }
+        header {
+            .bd-navbar {
+                background-color: $brand-color;
+            }
+        }
 
-    footer {
-        background-color: $brand-color;
-        color: white;
-        padding: 25px;
+        main {
+            margin-top: 35px;
+            margin-bottom: 35px;
+            min-height: 100px;
 
-        p {
-            font-size: small;
-            margin-bottom: 0.5rem;
-            text-align: center;
+            h2{
+                font-size: 1.75rem;
+            }
+        }
+
+        footer {
+            background-color: $brand-color;
+            color: white;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+
+            p {
+                font-size: small;
+                margin-bottom: 0.5rem;
+                text-align: center;
+            }
         }
     }
 }

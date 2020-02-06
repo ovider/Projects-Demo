@@ -1,20 +1,32 @@
-﻿body a, body a:hover {
-  color: #b0c0ce;
-  text-decoration: none; }
-
-body header .bd-navbar {
-  background-color: #0f4c81; }
-
-body main {
-  margin-top: 35px;
-  margin-bottom: 35px;
-  min-height: 100px; }
-
-body footer {
-  background-color: #0f4c81;
-  color: white;
-  padding: 25px; }
-  body footer p {
-    font-size: small;
-    margin-bottom: 0.5rem;
-    text-align: center; }
+﻿html {
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+  html body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 95px;
+    position: relative; }
+    html body a, html body a:hover {
+      color: #b0c0ce;
+      text-decoration: none; }
+    html body header .bd-navbar {
+      background-color: #0f4c81; }
+    html body main {
+      margin-top: 35px;
+      margin-bottom: 35px;
+      min-height: 100px; }
+      html body main h2 {
+        font-size: 1.75rem; }
+    html body footer {
+      background-color: #0f4c81;
+      color: white;
+      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      width: 100%; }
+      html body footer p {
+        font-size: small;
+        margin-bottom: 0.5rem;
+        text-align: center; }

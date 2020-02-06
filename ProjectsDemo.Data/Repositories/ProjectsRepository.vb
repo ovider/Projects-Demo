@@ -1,5 +1,6 @@
 ﻿Imports AutoMapper
 Imports AutoMapper.QueryableExtensions
+Imports ProjectsDemo.Data.Models
 Imports ProjectsDemo.Model
 
 Class ProjectsRepository
@@ -15,19 +16,38 @@ Class ProjectsRepository
         End Using
     End Function
 
-    Public Function Find(Of TModel)(config As IConfigurationProvider, Optional filter As String = Nothing) As IList(Of TModel) Implements IProjectsRepository.Find
+    Public Function GetPage(Of TModel)(config As IConfigurationProvider,
+                                       Optional page As Integer = 1,
+                                       Optional pageSize As Integer = 10,
+                                       Optional filter As String = Nothing) As PagedResultSet(Of TModel) Implements IProjectsRepository.GetPage
+
+        Dim resultSet = New PagedResultSet(Of TModel) With {
+                .Page = page,
+                .PageSize = pageSize
+            }
+
         Using context As New ApplicationDataContext()
-            Dim query = context.Set(Of Model.Project)
+
+            Dim query As IQueryable(Of Model.Project) = context.Set(Of Model.Project).AsQueryable()
 
             If Not String.IsNullOrEmpty(filter) Then _
-                query = query.Where(Function(p) p.Name.StartsWith(filter))
+                query = query _
+                    .Where(Function(p) p.Name.StartsWith(filter))
 
-            Return query _
-                .OrderBy(Function(p) p.ScheduledDate) _
+            resultSet.Total = query.Count()
+
+            query = query _
+                .OrderByDescending(Function(p) p.ScheduledDate) _
+                .Skip((page - 1) * pageSize) _
+                .Take(pageSize)
+
+            resultSet.Results = query _
                 .ProjectTo(Of TModel)(config) _
                 .ToList()
 
         End Using
+
+        Return resultSet
     End Function
 
     Public Function GetById(Of TModel)(config As IConfigurationProvider, id As Integer) As TModel Implements IProjectsRepository.GetById
