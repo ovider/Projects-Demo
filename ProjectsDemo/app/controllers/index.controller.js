@@ -22,11 +22,7 @@
         vm.loadData = loadData;
         vm.search = search;
 
-        initController();
-
-        function initController() {
-            loadData();
-        }
+        loadData();
 
         var lastQueriedPage;
         var lastQueriedSearchQuery;
@@ -88,7 +84,7 @@
 
         function closeAlert() {
             vm.errorMessage = '';
-            $location.href("/");
+            $location.url("/");
         }
     }
 })();

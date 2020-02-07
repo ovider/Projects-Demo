@@ -1,4 +1,4 @@
-﻿<h2>Projects List</h2>
+﻿<h1 class="title">Projects List</h1>
 <loader ng-if="vm.loading"></loader>
 <div ng-if="vm.errorMessage" uib-alert class="alert-danger" close="vm.closeAlert()">{{vm.errorMessage}}</div>
 
@@ -8,52 +8,56 @@
         There are no projects to show.
     </div>
 
-<div class="mb-3">
-    <input type="text" placeholder="Search ..."  class="form-control"
-           ng-model="vm.searchQuery" ng-change="vm.search()" />
-</div>
-
-<table class="table table-bordered table-striped" ng-if="vm.projects.length">
-    <thead>
-        <tr>
-            <th>Project</th>
-            <th class="text-nowrap">Scheduled For</th>
-            <th class="text-right">Price ($)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="project in vm.projects">
-            <td>
-                {{project.name}}
-            </td>
-            <td>
-                {{project.scheduledDate | date: 'dd MMMM yyyy'}}
-            </td>
-            <td class="text-right">
-                $ {{project.price | number}}
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="row">
-    <div class="col-md-6 pagination-info">
-        Showing {{vm.first}} to {{vm.last}} of {{vm.total}} projects
+    <div class="mb-3">
+        <input type="text" placeholder="Search ..." class="form-control"
+               ng-model="vm.searchQuery" ng-change="vm.search()" />
     </div>
-    <div class="col-md-6 text-right">
-        <ul ng-if="vm.projects.length"
-            uib-pagination
-            total-items="vm.total"
-            ng-model="vm.page"
-            items-per-page="vm.pageSize"
-            max-size="5"
-            class="pagination"
-            boundary-link-numbers="true"
-            ng-click="vm.loadData()"
-            rotate="false">
-        </ul>
+
+    <table class="table table-bordered table-striped" ng-if="vm.projects.length">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th class="text-nowrap">Scheduled For</th>
+                <th>Price</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="project in vm.projects">
+                <td>
+                    {{project.name}}
+                </td>
+                <td class="text-right">
+                    {{project.scheduledDate | date: 'dd MMMM yyyy'}}
+                </td>
+                <td class="text-right">
+                    {{project.price | currency}}
+                </td>
+                <td class="text-center">
+                    <a ui-sref="details({_id: project.id})">View Project Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-6 pagination-info">
+            Showing {{vm.first}} to {{vm.last}} of {{vm.total}} projects
+        </div>
+        <div class="col-md-6 text-right">
+            <ul ng-if="vm.projects.length"
+                uib-pagination
+                total-items="vm.total"
+                ng-model="vm.page"
+                items-per-page="vm.pageSize"
+                max-size="5"
+                class="pagination"
+                boundary-link-numbers="true"
+                ng-click="vm.loadData()"
+                rotate="false">
+            </ul>
+        </div>
     </div>
-</div>
 </p>
 
 

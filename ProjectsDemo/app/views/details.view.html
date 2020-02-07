@@ -1,1 +1,35 @@
-﻿<h2>Project Details</h2>
+﻿<div class="form-container">
+    <h1 class="title">Project Details</h1>
+
+    <loader ng-if="vm.loading"></loader>
+    <div ng-if="vm.errorMessage" uib-alert class="alert-danger" close="vm.closeAlert()">{{vm.errorMessage}}</div>
+
+    <div ng-if="!vm.loading && !vm.errorMessage">
+        <div class="form-group row">
+            <label for="name" class="col-sm-4 col-form-label">Name</label>
+            <div class="col-sm-8">
+                <input class="form-control-plaintext" name="name" ng-model="vm.project.name" type="text" readonly />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="scheduledDate" class="col-sm-4 col-form-label">Scheduled Date</label>
+            <div class="col-sm-8">
+                <input class="form-control-plaintext" name="scheduledDate" ng-model="vm.project.scheduledDate | date: 'dd MMMM yyyy'" type="text" readonly />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="price" class="col-sm-4 col-form-label">Price</label>
+            <div class="col-sm-8">
+                <input class="form-control-plaintext" name="price" ng-model="vm.project.price | currency" type="text" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-light btn-block" ui-sref="index">Go back to All Projects List</a>
+        </div>
+        <div class="form-group">
+            <a class="btn btn-primary btn-block" ui-sref="add">Add a new project</a>
+        </div>
+    </div>
+</div>

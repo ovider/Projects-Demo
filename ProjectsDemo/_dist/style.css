@@ -8,8 +8,10 @@
     padding: 0;
     padding-bottom: 95px;
     position: relative; }
-    html body a, html body a:hover {
-      color: #b0c0ce;
+    html body a {
+      color: #0f4c81; }
+    html body a:hover {
+      color: #2b7bc0;
       text-decoration: none; }
     html body header .bd-navbar {
       background-color: #0f4c81; }
@@ -17,8 +19,11 @@
       margin-top: 1rem;
       margin-bottom: 1rem;
       position: relative; }
-      html body main h2 {
-        font-size: 1.75rem; }
+      html body main .title {
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase; }
       html body main .table {
         margin-bottom: 0; }
         html body main .table th, html body main .table td {
@@ -40,6 +45,15 @@
         font-size: small;
         margin-bottom: 0.5rem;
         text-align: center; }
+      html body footer a, html body footer a:hover {
+        color: white;
+        text-decoration: underline; }
+    html body .form-container {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto; }
+      html body .form-container label {
+        font-weight: 600; }
 
 /* Loading animation */
 .loader-overlay {

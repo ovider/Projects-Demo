@@ -1,3 +1,4 @@
-﻿$brand-color: #0f4c81;
+﻿
+$brand-color: #0f4c81;
 $border-color: #4f5d75;
-$link-color: scale_color($brand-color, $lightness: + 65%, $saturation: - 70%);
+$link-hover: scale_color($brand-color, $lightness: + 25%, $saturation: - 20%);

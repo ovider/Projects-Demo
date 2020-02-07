@@ -39,6 +39,9 @@
     function run($rootScope) {
         // callback for module run
 
+        // set isNavCollapsed = true
+        $rootScope.isNavCollapsed = true;
+
         // update active tab on state change
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             $rootScope.activeTab = toState.data.tab;

@@ -5,15 +5,34 @@
         .module('app')
         .controller('Projects.DetailsController', Controller);
 
-    function Controller() {
+    function Controller(ProjectsService, $stateParams, $location) {
         var vm = this;
 
-        vm.loading = true;
+        vm.loading = false;
+        vm.errorMessage = '';
+        vm.id = $stateParams._id;
 
-        initController();
+        vm.project = {
+            name: '',
+            price: null,
+            scheduledDate: null
+        };
 
-        function initController() {
+        loadData();
 
+        function loadData() {
+            vm.loading = true;
+
+            ProjectsService
+                .GetById(vm.id).then(
+                    function (result) {
+                        vm.loading = false;
+                        vm.project = result;
+                    },
+                    function (errorMessage) {
+                        vm.loading = false;
+                        vm.errorMessage = errorMessage;
+                    });
         }
     }
 })();

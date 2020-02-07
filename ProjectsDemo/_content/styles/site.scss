@@ -12,8 +12,12 @@ html {
         padding-bottom: 95px;
         position: relative;
 
-        a, a:hover {
-            color: $link-color;
+        a {
+            color: $brand-color;
+        }
+
+        a:hover {
+            color: $link-hover;
             text-decoration: none;
         }
 
@@ -28,8 +32,11 @@ html {
             margin-bottom: 1rem;
             position: relative;
 
-            h2 {
-                font-size: 1.75rem;
+            .title {
+                font-size: 2rem;
+                letter-spacing: 0.1rem;
+                margin-bottom: 1.5rem;
+                text-transform: uppercase;
             }
 
             .table {
@@ -63,6 +70,21 @@ html {
                 font-size: small;
                 margin-bottom: 0.5rem;
                 text-align: center;
+            }
+
+            a, a:hover {
+                color: white;
+                text-decoration: underline;
+            }
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+
+            label {
+                font-weight: 600;
             }
         }
     }
