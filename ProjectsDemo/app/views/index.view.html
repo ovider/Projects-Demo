@@ -4,13 +4,13 @@
 
 
 <p class="table-responsive-sm mt-3" ng-if="!vm.errorMessage">
-    <div ng-if="!vm.projects.length && !vm.loading">
-        There are no projects to show.
-    </div>
-
     <div class="mb-3">
         <input type="text" placeholder="Search ..." class="form-control"
                ng-model="vm.searchQuery" ng-change="vm.search()" />
+    </div>
+
+    <div ng-if="!vm.projects.length && !vm.loading">
+        There are no projects to show.
     </div>
 
     <table class="table table-bordered table-striped" ng-if="vm.projects.length">
@@ -40,13 +40,13 @@
         </tbody>
     </table>
 
-    <div class="row">
+    <div class="row" ng-if="vm.projects.length">
         <div class="col-md-6 pagination-info">
             Showing {{vm.first}} to {{vm.last}} of {{vm.total}} projects
         </div>
+
         <div class="col-md-6 text-right">
-            <ul ng-if="vm.projects.length"
-                uib-pagination
+            <ul uib-pagination
                 total-items="vm.total"
                 ng-model="vm.page"
                 items-per-page="vm.pageSize"
@@ -57,6 +57,7 @@
                 rotate="false">
             </ul>
         </div>
+
     </div>
 </p>
 
