@@ -1,5 +1,15 @@
-﻿@media (max-width: 992px) {
-  body main {
-    margin-top: 25px;
-    margin-bottom: 25px;
-    min-height: initial; } }
+﻿/* large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  html body main {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 200px; } }
+
+/* medium devices (tablets, 768px and up)  */
+@media (min-width: 768px) {
+  html body main .pagination {
+    justify-content: right; }
+  html body main .pagination-info {
+    text-align: left; }
+  html body main .table {
+    margin-bottom: 1.5rem; } }

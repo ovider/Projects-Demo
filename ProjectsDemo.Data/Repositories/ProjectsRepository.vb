@@ -30,14 +30,17 @@ Class ProjectsRepository
 
             Dim query As IQueryable(Of Model.Project) = context.Set(Of Model.Project).AsQueryable()
 
+            '' apply the filter, if any
             If Not String.IsNullOrEmpty(filter) Then _
                 query = query _
                     .Where(Function(p) p.Name.StartsWith(filter))
 
+            '' calculate the total count
             resultSet.Total = query.Count()
 
+            '' page the result
             query = query _
-                .OrderByDescending(Function(p) p.ScheduledDate) _
+                .OrderBy(Function(p) p.Name) _
                 .Skip((page - 1) * pageSize) _
                 .Take(pageSize)
 

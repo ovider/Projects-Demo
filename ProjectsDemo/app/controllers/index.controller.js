@@ -5,12 +5,12 @@
         .module('app')
         .controller('Projects.IndexController', Controller);
 
-    function Controller(ProjectsService, $stateParams, $state) {
+    function Controller(ProjectsService, $state) {
         var vm = this;
 
         vm.loading = true;
-        vm.searchQuery = $stateParams.q;
-        vm.page = parseInt($stateParams.page);
+        vm.searchQuery = '';
+        vm.page = 1;
         vm.pageSize = 10;
         vm.total = 0;
         vm.first = 1;
@@ -18,8 +18,8 @@
         vm.errorMessage = '';
         vm.projects = [];
 
-        vm.goToPage = goToPage;
         vm.closeAlert = closeAlert;
+        vm.loadData = loadData;
 
         initController();
 
@@ -47,7 +47,7 @@
                             // then redirect to last page.
 
                             vm.page = Math.ceil(vm.total * 1.0 / vm.pageSize);
-                            goToPage();
+                            loadData();
                         }
 
                         vm.loading = false;
@@ -62,21 +62,12 @@
 
         }
 
-        function goToPage() {
-            $state.go('index',
-                {
-                    page: vm.page,
-                    q: vm.searchQuery
-                },
-                { location: true });
-        }
-
         function closeAlert() {
             vm.errorMessage = '';
             vm.page = 1;
             vm.searchQuery = '';
 
-            goToPage();
+            loadData();
         }
     }
 })();

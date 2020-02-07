@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse justify-content-end" uib-collapse="isNavCollapsed">
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" ui-sref="index({page: 1})" ng-class="{active: activeTab === 'index'}">All Projects</a>
+                        <a class="nav-link" ui-sref="index" ng-class="{active: activeTab === 'index'}">All Projects</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" ui-sref="add" ng-class="{active: activeTab === 'new'}">Create Project</a>

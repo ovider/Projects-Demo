@@ -13,16 +13,10 @@
         // define the routes
         $stateProvider
             .state('index', {
-                url: '/:page',
+                url: '/',
                 templateUrl: 'app/views/index.view.html',
                 controller: 'Projects.IndexController',
                 controllerAs: 'vm',
-                params: {
-                    page: {
-                        value: "1",
-                        squash: true
-                    }
-                },
                 data: { tab: 'index' }
             })
             .state('add', {
