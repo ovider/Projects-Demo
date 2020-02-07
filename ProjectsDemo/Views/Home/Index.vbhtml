@@ -8,7 +8,11 @@
 
     <base href="/" />
 
-    @*site style*@
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+          1integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- site style -->
     @Styles.Render("~/styles")
 
 </head>
@@ -51,8 +55,15 @@
         </div>
     </footer>
 
-    <!-- core -->
-    @Scripts.Render("~/scripts/core")
+    <!-- angular -->
+    <script src="//unpkg.com/angular@1.7.9/angular.min.js"></script>
+    <script src="//unpkg.com/%40uirouter/angularjs@1.0.5/release/angular-ui-router.min.js"></script>
+    <script src="//unpkg.com/angular-animate@1.7.9/angular-animate.min.js"></script>
+    <script src="//unpkg.com/angular-touch@1.7.9/angular-touch.min.js"></script>
+    
+    <!-- vendor -->
+    @Scripts.Render("~/scripts/vendor")
+
     <!-- app -->
     @Scripts.Render("~/scripts/app")
 </body>

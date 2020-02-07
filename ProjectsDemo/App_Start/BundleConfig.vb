@@ -5,13 +5,11 @@ Public Module BundleConfig
     ' For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
     Public Sub RegisterBundles(ByVal bundles As BundleCollection)
 
-        '' enable optimizations in releasse so css and js files are minified
-#If Not DEBUG Then
-        BundleTable.EnableOptimizations = True
-#End If
+        '' optimizations (minification) seem to break the javascript
+        BundleTable.EnableOptimizations = False
 
         Dim stylesBundle As StyleBundle = CreateStylesBundle()
-        Dim coreScriptsBundle As ScriptBundle = CreateCoreScriptsBundle()
+        Dim coreScriptsBundle As ScriptBundle = CreateVendorScriptsBundle()
         Dim appScriptsBundle As ScriptBundle = CreateAppScriptsBundle()
 
         bundles.Add(stylesBundle)
@@ -20,19 +18,16 @@ Public Module BundleConfig
     End Sub
 
     ''' <summary>
-    ''' Create a bundle with all the external javascript dependencies of the application
+    ''' Create a bundle with external javascript dependencies of the application
+    ''' angular is not included here, but loaded directly from cdn
     ''' </summary>
     ''' <returns></returns>
-    Private Function CreateCoreScriptsBundle() As ScriptBundle
-        Dim bundle = New ScriptBundle("~/scripts/core") With {
+    Private Function CreateVendorScriptsBundle() As ScriptBundle
+        Dim bundle = New ScriptBundle("~/scripts/vendor") With {
             .Orderer = New NonOrderingBundleOrderer()
         }
 
         bundle.Include(
-            "~/_vendor/angular/angular.min.js",
-            "~/_vendor/angular-ui-router/angular-ui-router.min.js",
-            "~/_vendor/angular-animate/angular-animate.min.js",
-            "~/_vendor/angular-touch/angular-touch.min.js",
             "~/_vendor/ui-bootstrap/ui-bootstrap-tpls.js",
             "~/_vendor/moment/moment.js"
             )
@@ -53,14 +48,12 @@ Public Module BundleConfig
         ' and all the javascript files from the subfolders of /app/ folder: 
         ' * controllers
         ' * directives
-        ' * filters
         ' * services
 
         bundle.Include(
                     "~/app/app.js",
                     "~/app/controllers/*.js",
                     "~/app/directives/*.js",
-                    "~/app/filters/*.js",
                     "~/app/services/*.js")
 
         Return bundle
@@ -77,7 +70,6 @@ Public Module BundleConfig
         }
 
         bundle.Include(
-            "~/_vendor/bootstrap/bootstrap.min.css",
             "~/_dist/style.css",
             "~/_dist/responsive.css")
 

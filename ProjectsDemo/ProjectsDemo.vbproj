@@ -56,9 +56,6 @@
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="CommonServiceLocator, Version=2.0.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.2.0.5\lib\net48\CommonServiceLocator.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -255,30 +252,6 @@
     <Content Include="_dist\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
-    <Content Include="_vendor\angular-animate\angular-animate.js" />
-    <Content Include="_vendor\angular-animate\angular-animate.min.js" />
-    <Content Include="_vendor\angular-animate\index.js" />
-    <Content Include="_vendor\angular-touch\angular-touch.js" />
-    <Content Include="_vendor\angular-touch\angular-touch.min.js" />
-    <Content Include="_vendor\angular-ui-router\angular-ui-router.js" />
-    <Content Include="_vendor\angular-ui-router\angular-ui-router.min.js" />
-    <Content Include="_vendor\angular-ui-router\resolveService.js" />
-    <Content Include="_vendor\angular-ui-router\resolveService.min.js" />
-    <Content Include="_vendor\angular-ui-router\stateEvents.js" />
-    <Content Include="_vendor\angular-ui-router\stateEvents.min.js" />
-    <Content Include="_vendor\angular-ui-router\ui-router-angularjs.js" />
-    <Content Include="_vendor\angular-ui-router\ui-router-angularjs.min.js" />
-    <Content Include="_vendor\angular\angular-csp.css" />
-    <Content Include="_vendor\angular\angular.js" />
-    <Content Include="_vendor\angular\angular.min.js" />
-    <Content Include="_vendor\angular\index.js" />
-    <Content Include="_vendor\angular-touch\index.js" />
-    <Content Include="_vendor\bootstrap\bootstrap-grid.css" />
-    <Content Include="_vendor\bootstrap\bootstrap-grid.min.css" />
-    <Content Include="_vendor\bootstrap\bootstrap-reboot.css" />
-    <Content Include="_vendor\bootstrap\bootstrap-reboot.min.css" />
-    <Content Include="_vendor\bootstrap\bootstrap.css" />
-    <Content Include="_vendor\bootstrap\bootstrap.min.css" />
     <Content Include="_vendor\moment\moment.js" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap-csp.css" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap-tpls.js" />
@@ -301,36 +274,6 @@
     <Content Include="Views\Shared\Error.vbhtml" />
     <Content Include="_content\styles\variables.scss" />
     <Content Include="_content\styles\responsive.scss" />
-    <Content Include="_vendor\angular\angular.min.js.gzip" />
-    <Content Include="_vendor\angular\angular.min.js.map" />
-    <Content Include="_vendor\angular\bower.json" />
-    <Content Include="_vendor\angular\LICENSE.md" />
-    <Content Include="_vendor\angular\package.json" />
-    <Content Include="_vendor\angular\README.md" />
-    <Content Include="_vendor\angular-ui-router\angular-ui-router.js.map" />
-    <Content Include="_vendor\angular-ui-router\angular-ui-router.min.js.map" />
-    <Content Include="_vendor\angular-ui-router\resolveService.js.map" />
-    <Content Include="_vendor\angular-ui-router\resolveService.min.js.map" />
-    <Content Include="_vendor\angular-ui-router\stateEvents.js.map" />
-    <Content Include="_vendor\angular-ui-router\stateEvents.min.js.map" />
-    <Content Include="_vendor\angular-ui-router\ui-router-angularjs.js.map" />
-    <Content Include="_vendor\angular-ui-router\ui-router-angularjs.min.js.map" />
-    <Content Include="_vendor\angular-animate\angular-animate.min.js.map" />
-    <Content Include="_vendor\angular-animate\bower.json" />
-    <Content Include="_vendor\angular-animate\LICENSE.md" />
-    <Content Include="_vendor\angular-animate\package.json" />
-    <Content Include="_vendor\angular-animate\README.md" />
-    <Content Include="_vendor\angular-touch\angular-touch.min.js.map" />
-    <Content Include="_vendor\angular-touch\bower.json" />
-    <Content Include="_vendor\angular-touch\LICENSE.md" />
-    <Content Include="_vendor\angular-touch\package.json" />
-    <Content Include="_vendor\angular-touch\README.md" />
-    <Content Include="_vendor\bootstrap\bootstrap-grid.css.map" />
-    <Content Include="_vendor\bootstrap\bootstrap-grid.min.css.map" />
-    <Content Include="_vendor\bootstrap\bootstrap-reboot.css.map" />
-    <Content Include="_vendor\bootstrap\bootstrap-reboot.min.css.map" />
-    <Content Include="_vendor\bootstrap\bootstrap.css.map" />
-    <Content Include="_vendor\bootstrap\bootstrap.min.css.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
