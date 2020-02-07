@@ -1,5 +1,6 @@
 ﻿Imports System.Web.Http
 Imports Unity
+Imports Unity.AspNet.WebApi
 Imports Unity.WebApi
 
 ''' <summary>
@@ -7,7 +8,10 @@ Imports Unity.WebApi
 ''' </summary>
 NotInheritable Class UnityConfig
 
-    Shared Sub RegisterComponents()
+    Public Shared Container As Lazy(Of IUnityContainer) = New Lazy(Of IUnityContainer)(Function() GetConfiguredContainer())
+
+    Private Shared Function GetConfiguredContainer()
+
         Dim container = New UnityContainer()
 
         '' register all your components with the container here
@@ -15,6 +19,8 @@ NotInheritable Class UnityConfig
 
         MappingConfig.RegisterMaps(container)
 
-        GlobalConfiguration.Configuration.DependencyResolver = New UnityDependencyResolver(container)
-    End Sub
+        Return container
+
+
+    End Function
 End Class

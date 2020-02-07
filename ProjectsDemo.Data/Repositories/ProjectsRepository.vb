@@ -2,18 +2,15 @@
 Imports AutoMapper.QueryableExtensions
 Imports ProjectsDemo.Data.Models
 Imports ProjectsDemo.Model
+Imports Unity
 
 Class ProjectsRepository
     Implements IProjectsRepository
 
     Public Async Function CreateAsync(entity As Project) As Task Implements IProjectsRepository.CreateAsync
-        Using context As New ApplicationDataContext()
+        Context.Set(Of Project).Add(entity)
 
-            context.Set(Of Project).Add(entity)
-
-            Await context.SaveChangesAsync()
-
-        End Using
+        Await Context.SaveChangesAsync()
     End Function
 
     Public Function GetPage(Of TModel)(config As IConfigurationProvider,
@@ -26,41 +23,38 @@ Class ProjectsRepository
                 .PageSize = pageSize
             }
 
-        Using context As New ApplicationDataContext()
 
-            Dim query As IQueryable(Of Model.Project) = context.Set(Of Model.Project).AsQueryable()
+        Dim query As IQueryable(Of Model.Project) = Context.Set(Of Model.Project).AsQueryable()
 
-            '' apply the filter, if any
-            If Not String.IsNullOrEmpty(filter) Then _
-                query = query _
-                    .Where(Function(p) p.Name.Contains(filter))
-
-            '' calculate the total count
-            resultSet.Total = query.Count()
-
-            '' page the result
+        '' apply the filter, if any
+        If Not String.IsNullOrEmpty(filter) Then _
             query = query _
-                .OrderBy(Function(p) p.Name) _
-                .Skip((page - 1) * pageSize) _
-                .Take(pageSize)
+                .Where(Function(p) p.Name.Contains(filter))
 
-            resultSet.Results = query _
-                .ProjectTo(Of TModel)(config) _
-                .ToList()
+        '' calculate the total count
+        resultSet.Total = query.Count()
 
-        End Using
+        '' page the result
+        query = query _
+            .OrderBy(Function(p) p.Name) _
+            .Skip((page - 1) * pageSize) _
+            .Take(pageSize)
+
+        resultSet.Results = query _
+            .ProjectTo(Of TModel)(config) _
+            .ToList()
 
         Return resultSet
     End Function
 
     Public Function GetById(Of TModel)(config As IConfigurationProvider, id As Integer) As TModel Implements IProjectsRepository.GetById
-        Using context As New ApplicationDataContext()
-            Dim query = context.Set(Of Model.Project).Where(Function(p) p.Id = id)
+        Dim query = Context.Set(Of Model.Project).Where(Function(p) p.Id = id)
 
-            Return query _
-                .ProjectTo(Of TModel)(config) _
-                .FirstOrDefault()
-
-        End Using
+        Return query _
+            .ProjectTo(Of TModel)(config) _
+            .FirstOrDefault()
     End Function
+
+    <Dependency>
+    Public Context As ApplicationDataContext
 End Class

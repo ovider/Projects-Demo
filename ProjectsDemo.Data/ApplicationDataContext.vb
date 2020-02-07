@@ -24,4 +24,9 @@ Class ApplicationDataContext
 
         modelBuilder.Configurations.AddFromAssembly(dataAssembly)
     End Sub
+
+    Protected Overrides Sub Dispose(disposing As Boolean)
+        MyBase.Dispose(disposing)
+    End Sub
 End Class
+
