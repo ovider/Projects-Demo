@@ -31,6 +31,9 @@
                 templateUrl: 'app/views/details.view.html',
                 controller: 'Projects.DetailsController',
                 controllerAs: 'vm',
+                params: {
+                    successMessage: null
+                },
                 data: { tab: 'index' }
             });
 

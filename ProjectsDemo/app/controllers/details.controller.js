@@ -12,6 +12,9 @@
         vm.errorMessage = '';
         vm.id = $stateParams._id;
 
+        // if redirected from add page, check if there is a success message to show
+        vm.successMessage = $stateParams.successMessage;
+
         vm.project = {
             name: '',
             price: null,

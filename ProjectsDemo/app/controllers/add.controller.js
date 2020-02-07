@@ -37,7 +37,9 @@
                     function (result) {
                         vm.loading = false;
 
-                        $state.go("details", { _id: result.id }, { location: true });
+                        $state.go("details",
+                            { _id: result.id, successMessage: 'Well done! Your project was created.' },
+                            { location: true });
                     },
                     function (errorMessage) {
 
