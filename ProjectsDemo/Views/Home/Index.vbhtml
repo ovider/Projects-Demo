@@ -15,9 +15,9 @@
 <body ng-app="app">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bd-navbar">
-            <h1 class="navbar-brand">
+            <a class="navbar-brand" href="/">
                 Projects Management
-            </h1>
+            </a>
 
             <button type="button" class="navbar-toggler" ng-click="isNavCollapsed = !isNavCollapsed">
                 <span class="navbar-toggler-icon"></span>
