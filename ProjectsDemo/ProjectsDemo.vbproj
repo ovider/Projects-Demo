@@ -252,7 +252,6 @@
     <Content Include="_dist\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
-    <Content Include="_vendor\moment\moment.js" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap-csp.css" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap-tpls.js" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap.js" />

@@ -61,8 +61,11 @@
     <script src="//unpkg.com/angular-animate@1.7.9/angular-animate.min.js"></script>
     <script src="//unpkg.com/angular-touch@1.7.9/angular-touch.min.js"></script>
     
-    <!-- vendor -->
-    @Scripts.Render("~/scripts/vendor")
+    <!-- moment -->
+    <script src="//unpkg.com/moment@2.24.0/min/moment.min.js"></script>
+    
+    <!-- bootstrap ui -->
+    <script src="~/_vendor/ui-bootstrap/ui-bootstrap-tpls.js"></script>
 
     <!-- app -->
     @Scripts.Render("~/scripts/app")

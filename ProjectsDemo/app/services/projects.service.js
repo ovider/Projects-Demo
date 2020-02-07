@@ -34,11 +34,16 @@
         }
 
         function Create(entity) {
-            // format date so that timezone is not lost
-            entity.scheduledDate = moment(entity.scheduledDate).format();
+            // format date - strip time & timezone
+
+            var data = {
+                name: entity.name,
+                scheduledDate: moment(entity.scheduledDate).format("YYYY-MM-DD"),
+                price: entity.price
+            };
 
             return $http
-                .post(endpoint, entity)
+                .post(endpoint, data)
                 .then(handleSuccess, handleError);
         }
 

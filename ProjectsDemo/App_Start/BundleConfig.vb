@@ -4,36 +4,12 @@ Imports System.Web.Optimization
 Public Module BundleConfig
     ' For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
     Public Sub RegisterBundles(ByVal bundles As BundleCollection)
-
-        '' optimizations (minification) seem to break the javascript
-        BundleTable.EnableOptimizations = False
-
         Dim stylesBundle As StyleBundle = CreateStylesBundle()
-        Dim coreScriptsBundle As ScriptBundle = CreateVendorScriptsBundle()
         Dim appScriptsBundle As ScriptBundle = CreateAppScriptsBundle()
 
         bundles.Add(stylesBundle)
-        bundles.Add(coreScriptsBundle)
         bundles.Add(appScriptsBundle)
     End Sub
-
-    ''' <summary>
-    ''' Create a bundle with external javascript dependencies of the application
-    ''' angular is not included here, but loaded directly from cdn
-    ''' </summary>
-    ''' <returns></returns>
-    Private Function CreateVendorScriptsBundle() As ScriptBundle
-        Dim bundle = New ScriptBundle("~/scripts/vendor") With {
-            .Orderer = New NonOrderingBundleOrderer()
-        }
-
-        bundle.Include(
-            "~/_vendor/ui-bootstrap/ui-bootstrap-tpls.js",
-            "~/_vendor/moment/moment.js"
-            )
-
-        Return bundle
-    End Function
 
 
     ''' <summary>
