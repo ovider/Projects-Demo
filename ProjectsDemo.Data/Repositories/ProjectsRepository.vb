@@ -33,7 +33,7 @@ Class ProjectsRepository
             '' apply the filter, if any
             If Not String.IsNullOrEmpty(filter) Then _
                 query = query _
-                    .Where(Function(p) p.Name.StartsWith(filter))
+                    .Where(Function(p) p.Name.Contains(filter))
 
             '' calculate the total count
             resultSet.Total = query.Count()

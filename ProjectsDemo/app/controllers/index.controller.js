@@ -5,7 +5,7 @@
         .module('app')
         .controller('Projects.IndexController', Controller);
 
-    function Controller(ProjectsService, $state) {
+    function Controller(ProjectsService, $location, $timeout) {
         var vm = this;
 
         vm.loading = true;
@@ -20,6 +20,7 @@
 
         vm.closeAlert = closeAlert;
         vm.loadData = loadData;
+        vm.search = search;
 
         initController();
 
@@ -27,7 +28,20 @@
             loadData();
         }
 
+        var lastQueriedPage;
+        var lastQueriedSearchQuery;
+
         function loadData() {
+            if (vm.page === lastQueriedPage && vm.searchQuery === lastQueriedSearchQuery) {
+                // we already have queried data for the current page and search query 
+                // we can return
+
+                return;
+            }
+
+            lastQueriedPage = vm.page;
+            lastQueriedSearchQuery = vm.searchQuery;
+
             vm.loading = true;
 
             ProjectsService
@@ -50,6 +64,7 @@
                             loadData();
                         }
 
+
                         vm.loading = false;
                     },
                     function (errorMessage) {
@@ -62,12 +77,18 @@
 
         }
 
+        function search() {
+            // wait some time to reduce the number of search queries
+            // i.e. do not query after each letter change, but leave a bit more time to the user to type his query
+            $timeout(function () {
+                vm.page = 1;
+                loadData();
+            }, 400);
+        }
+
         function closeAlert() {
             vm.errorMessage = '';
-            vm.page = 1;
-            vm.searchQuery = '';
-
-            loadData();
+            $location.href("/");
         }
     }
 })();
