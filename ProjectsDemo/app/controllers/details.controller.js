@@ -3,9 +3,9 @@
 
     angular
         .module('app')
-        .controller('Projects.DetailsController', Controller);
+        .controller('Projects.DetailsController', ['ProjectsService', '$stateParams', Controller]);
 
-    function Controller(ProjectsService, $stateParams, $location) {
+    function Controller(ProjectsService, $stateParams) {
         var vm = this;
 
         vm.loading = false;

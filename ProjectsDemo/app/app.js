@@ -3,8 +3,8 @@
 
     angular
         .module('app', ['ui.router', 'ui.bootstrap'])
-        .config(config)
-        .run(run);
+        .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', config])
+        .run(['$rootScope', '$transitions', run]);
 
     function config($stateProvider, $urlRouterProvider, $locationProvider) {
         //default route
@@ -39,15 +39,15 @@
 
         $locationProvider.html5Mode(true);
     }
-    function run($rootScope) {
+    function run($rootScope, $transitions) {
         // callback for module run
 
         // set isNavCollapsed = true
         $rootScope.isNavCollapsed = true;
 
-        // update active tab on state change
-        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-            $rootScope.activeTab = toState.data.tab;
+        // update active tab on transiton success
+        $transitions.onSuccess({}, function (transition) {
+            $rootScope.activeTab = transition.to().data.tab;
         });
     }
 })();

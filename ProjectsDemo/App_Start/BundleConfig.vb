@@ -26,11 +26,11 @@ Public Module BundleConfig
         ' * directives
         ' * services
 
-        bundle.Include(
-                    "~/app/app.js",
-                    "~/app/controllers/*.js",
-                    "~/app/directives/*.js",
-                    "~/app/services/*.js")
+        bundle _
+            .Include("~/app/app.js") _
+            .Include("~/app/controllers/*.js",
+                     "~/app/directives/*.js",
+                     "~/app/services/*.js")
 
         Return bundle
     End Function
@@ -45,9 +45,9 @@ Public Module BundleConfig
             .Orderer = New NonOrderingBundleOrderer()
         }
 
-        bundle.Include(
-            "~/_dist/style.css",
-            "~/_dist/responsive.css")
+        bundle _
+            .Include("~/_dist/style.css") _
+            .Include("~/_dist/responsive.css")
 
         Return bundle
     End Function

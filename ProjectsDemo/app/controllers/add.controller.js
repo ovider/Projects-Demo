@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller('Projects.AddController', Controller);
+        .controller('Projects.AddController', ['ProjectsService', '$state', '$location', Controller]);
 
     function Controller(ProjectsService, $state, $location) {
         var vm = this;

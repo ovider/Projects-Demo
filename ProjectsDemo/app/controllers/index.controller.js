@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller('Projects.IndexController', Controller);
+        .controller('Projects.IndexController', ['ProjectsService', '$location', '$timeout', Controller]);
 
     function Controller(ProjectsService, $location, $timeout) {
         var vm = this;
