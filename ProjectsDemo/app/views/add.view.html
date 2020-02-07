@@ -1,18 +1,24 @@
 ﻿<div class="form-container">
     <h1 class="title">Add a new project</h1>
-    
+
     <loader ng-if="vm.loading"></loader>
     <div ng-if="vm.errorMessage" uib-alert class="alert-danger" close="vm.closeAlert()">{{vm.errorMessage}}</div>
 
-    <form ng-submit="vm.submit()">
+    <form name="form" ng-submit="form.$valid && vm.submit()" novalidate>
         <div class="form-group">
             <label for="name">Name</label>
-            <input class="form-control" name="name" ng-model="vm.project.name" type="text" placeholder="Your project name.." required />
+            <input class="form-control" id="name" name="name" ng-model="vm.project.name" type="text" placeholder="Your project name.." required />
+
+            <div ng-if="form.name.$error.required" class="invalid-feedback">Please enter the project name.</div>
         </div>
 
         <div class="form-group">
             <label for="scheduledDate">Scheduled Date</label>
-            <input class="form-control" name="scheduledDate" ng-model="vm.project.scheduledDate" type="date" required />
+            <input class="form-control" id="scheduledDate" name="scheduledDate" ng-model="vm.project.scheduledDate" type="date" required
+                   max="{{vm.maxDate}}" min="{{vm.minDate}}" />
+
+            <div ng-if="form.scheduledDate.$error.required" class="invalid-feedback">Please provide the project scheduled date.</div>
+            <div ng-if="form.scheduledDate.$error.max || form.scheduledDate.$error.min" class="invalid-feedback">Selected date is invalid. (Select a date between {{vm.minDate | date : 'dd/MM/yyyy'}} &amp; {{vm.maxDate | date : 'dd/MM/yyyy'}})</div>
         </div>
 
         <div class="form-group">
@@ -22,8 +28,12 @@
                     <span class="input-group-text" id="priceSymbol">$</span>
                 </div>
 
-                <input class="form-control" name="price" ng-model="vm.project.price" 
-                       type="number" min="0" required step=".01" aria-describedby="priceSymbol" />
+                <input class="form-control" id="price" name="price" ng-model="vm.project.price"
+                       type="number" min="0.01" required step=".01" aria-describedby="priceSymbol" />
+
+                <div ng-if="form.price.$error.required" class="invalid-feedback">Please provide the project price.</div>
+                <div ng-if="form.price.$error.min" class="invalid-feedback">Project price must be positive.</div>
+
             </div>
         </div>
         <div class="form-group">

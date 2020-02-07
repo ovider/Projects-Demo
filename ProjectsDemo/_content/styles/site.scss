@@ -86,6 +86,14 @@ html {
             label {
                 font-weight: 600;
             }
+
+            .form-control.ng-invalid.ng-touched, .ng-submitted .form-control.ng-invalid {
+                border-color: #dc3545;
+            }
+
+            .ng-submitted .invalid-feedback {
+                display: block;
+            }
         }
     }
 }

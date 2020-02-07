@@ -54,6 +54,10 @@
       margin-right: auto; }
       html body .form-container label {
         font-weight: 600; }
+      html body .form-container .form-control.ng-invalid.ng-touched, html body .form-container .ng-submitted .form-control.ng-invalid {
+        border-color: #dc3545; }
+      html body .form-container .ng-submitted .invalid-feedback {
+        display: block; }
 
 /* Loading animation */
 .loader-overlay {

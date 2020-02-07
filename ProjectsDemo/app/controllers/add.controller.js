@@ -10,6 +10,8 @@
 
         vm.loading = false;
         vm.errorMessage = '';
+        vm.maxDate = new Date(9999, 11, 31);
+        vm.minDate = new Date(1753, 0, 1);
 
         vm.project = {
             name: '',
