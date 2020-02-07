@@ -33,7 +33,8 @@ Public Module BundleConfig
             "~/_vendor/angular-ui-router/angular-ui-router.min.js",
             "~/_vendor/angular-animate/angular-animate.min.js",
             "~/_vendor/angular-touch/angular-touch.min.js",
-            "~/_vendor/ui-bootstrap/ui-bootstrap-tpls.js"
+            "~/_vendor/ui-bootstrap/ui-bootstrap-tpls.js",
+            "~/_vendor/moment/moment.js"
             )
 
         Return bundle

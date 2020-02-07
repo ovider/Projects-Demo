@@ -277,6 +277,7 @@
     <Content Include="_vendor\bootstrap\bootstrap-reboot.min.css" />
     <Content Include="_vendor\bootstrap\bootstrap.css" />
     <Content Include="_vendor\bootstrap\bootstrap.min.css" />
+    <Content Include="_vendor\moment\moment.js" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap-csp.css" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap-tpls.js" />
     <Content Include="_vendor\ui-bootstrap\ui-bootstrap.js" />

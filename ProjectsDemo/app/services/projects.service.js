@@ -34,7 +34,12 @@
         }
 
         function Create(entity) {
-            return $http.post(endpoint, entity).then(handleSuccess, handleError);
+            // format date so that timezone is not lost
+            entity.scheduledDate = moment(entity.scheduledDate).format();
+
+            return $http
+                .post(endpoint, entity)
+                .then(handleSuccess, handleError);
         }
 
         return service;
